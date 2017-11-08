@@ -22,5 +22,10 @@ define(['jquery'], function($) {
             }
         })
     })
+
+    //下拉菜单
+    $('.navs a + ul').prev().on('click',function(){
+        $(this).next().slideToggle();
+    })
     
 });

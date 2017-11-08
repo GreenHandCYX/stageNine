@@ -1,4 +1,10 @@
-define(['jquery','template','./utils','uploadify'],function($,template){
+define(['jquery','template','ckeditor','./utils','uploadify'],function($,template, CKEDITOR){
+    CKEDITOR.replace('ck');
+    for (instance in CKEDITOR.instances){
+        CKEDITOR.instances[instance].updateElement();
+    }
+
+
     $('#upfile').uploadify({
         //上传按钮文本
         buttonText:'',
@@ -8,7 +14,7 @@ define(['jquery','template','./utils','uploadify'],function($,template){
         //file表单的name属性
         fileObjName:'pic1',
         //设置上传进度条样式
-        // itemTemplate:'',
+        itemTemplate:'<span></span>',
         //使用flash
         swf:'/public/assets/uploadify/uploadify.swf',
         //上传地址
@@ -16,8 +22,11 @@ define(['jquery','template','./utils','uploadify'],function($,template){
         //上传成功的回调函数
         onUploadSuccess:function(file,data) {
             //file指上传的文件,data指请求返回的数据
-            console.log(file);
-            console.log(data);
+            data = JSON.parse(data);
+            console.log(data)
+           $('.preview img').attr('src','/api'+data.picAddr);
+           $('.preview input[name=picAddr1]').val(data.picAddr);
+           $('.preview input[name=picName1]').val(data.picName)
         }
     })
 

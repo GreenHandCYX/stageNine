@@ -20,7 +20,8 @@
                             <div class="col-xs-2 preview">
                                 <img src="/public/images/default.png">
                                 <input type="file" id="upfile">
-                                <input type="hidden" name="pic">
+                                <input type="hidden" name="picAddr1">
+                                <input type="hidden" name="picName1">
                                 <div class="cover">
                                     <i class="fa fa-upload"></i>
                                 </div>

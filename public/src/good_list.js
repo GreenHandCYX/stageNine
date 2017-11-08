@@ -21,6 +21,7 @@ define(['jquery','template','./utils'],function($,template){
         data:{page:page,pageSize:size},
         success:function(info){
             //渲染商品列表
+            console.log(info)
             var html = template('tpl',info);
             $('.goods').html(html);
 
